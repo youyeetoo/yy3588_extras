@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# live-build config — Ubuntu 22.04 (jammy) arm64, Linaro flow.
+
+set -e
+
+echo "I: create configuration"
+export LB_BOOTSTRAP_INCLUDE="apt-transport-https gnupg ca-certificates"
+lb config \
+ --mirror-bootstrap "http://ports.ubuntu.com/ubuntu-ports" \
+ --mirror-chroot "http://ports.ubuntu.com/ubuntu-ports" \
+ --mirror-chroot-security "http://ports.ubuntu.com/ubuntu-ports" \
+ --mirror-binary "http://ports.ubuntu.com/ubuntu-ports" \
+ --mirror-binary-security "http://ports.ubuntu.com/ubuntu-ports" \
+ --parent-mirror-bootstrap "http://ports.ubuntu.com/ubuntu-ports" \
+ --parent-mirror-chroot "http://ports.ubuntu.com/ubuntu-ports" \
+ --parent-mirror-chroot-security "http://ports.ubuntu.com/ubuntu-ports" \
+ --parent-mirror-binary "http://ports.ubuntu.com/ubuntu-ports" \
+ --parent-mirror-binary-security "http://ports.ubuntu.com/ubuntu-ports" \
+ --apt-indices false \
+ --apt-recommends false \
+ --apt-secure false \
+ --architectures arm64 \
+ --archive-areas 'main restricted universe multiverse' \
+ --backports false \
+ --binary-filesystem ext4 \
+ --binary-images tar \
+ --bootappend-live "hostname=ubuntu username=ubuntu" \
+ --bootloader "syslinux" \
+ --bootstrap-qemu-arch arm64 \
+ --bootstrap-qemu-static /usr/bin/qemu-aarch64-static \
+ --cache false \
+ --chroot-filesystem none \
+ --compression gzip \
+ --debootstrap-options "--variant=minbase --include=apt-transport-https,gnupg,ca-certificates" \
+ --distribution jammy \
+ --parent-distribution jammy \
+ --gzip-options '-9 --rsyncable' \
+ --iso-publisher 'Youyeetoo YY3588 SDK; https://wiki.youyeetoo.com/' \
+ --iso-volume "Ubuntu Jammy $(date +%Y%m%d-%H:%M)" \
+ --linux-flavours none \
+ --linux-packages none \
+ --mode ubuntu \
+ --security true \
+ --system normal \
+ --updates true
+
+echo "I: copy customization"
+test -d customization && cp -rf customization/* config/
+
+echo "I: done"
