@@ -1,0 +1,13 @@
+# Rootfs builder artifacts (live-build output, base tarballs, partition images)
+/debian/binary/
+/debian/linaro-*.tar.gz
+/debian/linaro-rootfs.img
+/ubuntu/binary/
+/ubuntu/linaro-*.tar.gz
+/ubuntu/linaro-rootfs.img
+
+# Editor / backup
+*.bak
+*~
+*.swp
+.DS_Store

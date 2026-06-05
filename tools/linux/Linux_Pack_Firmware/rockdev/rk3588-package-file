@@ -1,0 +1,24 @@
+# NAME		Relative path
+#
+#HWDEF		HWDEF
+package-file	package-file
+bootloader	Image/MiniLoaderAll.bin
+parameter	Image/parameter.txt
+#trust		Image/trust.img
+uboot		Image/uboot.img
+misc		Image/misc.img
+#resource	Image/resource.img
+#kernel		Image/kernel.img
+boot		Image/boot.img
+recovery	Image/recovery.img
+rootfs		Image/rootfs.img
+oem		Image/oem.img
+userdata	Image/userdata.img
+cache		Image/cache.img
+# Ҫд��backup�������ļ�����������update.img��
+# SELF �ǹؼ��֣���ʾ�����ļ���update.img������
+# �����������ļ�ʱ��������SELF�ļ������ݣ�����ͷ����Ϣ���м�¼
+# �ڽ�������ļ�ʱ�������SELF�ļ������ݡ�
+backup		RESERVED
+#update-script	update-script
+#recover-script	recover-script
